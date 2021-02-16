@@ -5,6 +5,18 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmsCatalog", "FilmsCatalog\FilmsCatalog.csproj", "{C8BF7B24-3B84-4DB5-B3C4-1F760E052E80}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmsCatalogDbCore", "FilmsCatalogDbCore\FilmsCatalogDbCore.csproj", "{2DC361E2-4C77-4394-B1BF-3A0EECE19737}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmsCatalogModels", "FilmsCatalogModels\FilmsCatalogModels.csproj", "{807E008A-83F9-4EBA-8FFF-A1F6B8B60310}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmsCatalogDbLayer", "FilmsCatalogDbLayer\FilmsCatalogDbLayer.csproj", "{C03B7B42-BC9B-4BC0-9F04-F6188087E62E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmsCatalogIntegrationTests", "FilmsCatalogIntegrationTests\FilmsCatalogIntegrationTests.csproj", "{354B4B17-92D5-4B67-9E85-64AD538A6BEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmsCatalogMapperSettings", "FilmsCatalogMapperSettings\FilmsCatalogMapperSettings.csproj", "{C0C4454C-26AF-4B0D-B9EA-0AE0CE902B60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmsCatalogBusinessLayer", "FilmsCatalogBusinessLayer\FilmsCatalogBusinessLayer.csproj", "{B4B0B99F-70D2-4541-B90E-320977E9A801}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +27,30 @@ Global
 		{C8BF7B24-3B84-4DB5-B3C4-1F760E052E80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8BF7B24-3B84-4DB5-B3C4-1F760E052E80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8BF7B24-3B84-4DB5-B3C4-1F760E052E80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DC361E2-4C77-4394-B1BF-3A0EECE19737}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DC361E2-4C77-4394-B1BF-3A0EECE19737}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DC361E2-4C77-4394-B1BF-3A0EECE19737}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DC361E2-4C77-4394-B1BF-3A0EECE19737}.Release|Any CPU.Build.0 = Release|Any CPU
+		{807E008A-83F9-4EBA-8FFF-A1F6B8B60310}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{807E008A-83F9-4EBA-8FFF-A1F6B8B60310}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{807E008A-83F9-4EBA-8FFF-A1F6B8B60310}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{807E008A-83F9-4EBA-8FFF-A1F6B8B60310}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C03B7B42-BC9B-4BC0-9F04-F6188087E62E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C03B7B42-BC9B-4BC0-9F04-F6188087E62E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C03B7B42-BC9B-4BC0-9F04-F6188087E62E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C03B7B42-BC9B-4BC0-9F04-F6188087E62E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{354B4B17-92D5-4B67-9E85-64AD538A6BEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{354B4B17-92D5-4B67-9E85-64AD538A6BEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{354B4B17-92D5-4B67-9E85-64AD538A6BEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{354B4B17-92D5-4B67-9E85-64AD538A6BEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0C4454C-26AF-4B0D-B9EA-0AE0CE902B60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0C4454C-26AF-4B0D-B9EA-0AE0CE902B60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0C4454C-26AF-4B0D-B9EA-0AE0CE902B60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0C4454C-26AF-4B0D-B9EA-0AE0CE902B60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4B0B99F-70D2-4541-B90E-320977E9A801}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4B0B99F-70D2-4541-B90E-320977E9A801}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4B0B99F-70D2-4541-B90E-320977E9A801}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4B0B99F-70D2-4541-B90E-320977E9A801}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

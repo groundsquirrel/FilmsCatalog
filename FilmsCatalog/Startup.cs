@@ -1,5 +1,6 @@
 using FilmsCatalog.Data;
 using FilmsCatalog.Models;
+using FilmsCatalogDbCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -13,6 +14,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FilmsCatalogMapperSettings;
+using AutoMapper;
+using FilmsCatalogBusinessLayer;
+using FilmsCatalogBusinessLayer.Interfaces;
+using FilmsCatalogDbLayer;
+using FilmsCatalogDbLayer.Interfaces;
 
 namespace FilmsCatalog
 {
@@ -33,7 +40,28 @@ namespace FilmsCatalog
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddDatabaseDeveloperPageExceptionFilter();            
+            services.AddDbContext<FilmsCatalogDbContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("FilmsCatalog")));
+
+            services.AddAutoMapper(typeof(FilmsCatalogMapper))
+                .AddAutoMapper(typeof(ModelViewMapper));
+
+            MapperConfiguration _mapperConfig = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile<FilmsCatalogMapper>();
+                cfg.AddProfile<ModelViewMapper>();
+            });
+            _mapperConfig.AssertConfigurationIsValid();
+            IMapper _mapper = _mapperConfig.CreateMapper();
+            services.AddSingleton(_mapper);
+
+            services
+                .AddScoped<IFilmRepo, FilmRepo>()
+                .AddScoped<IDirectorRepo, DirectorRepo>()
+                .AddScoped<IFilmsService, FilmsService>()
+                .AddScoped<IDbLayerService, DbLayerService>();
+            services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

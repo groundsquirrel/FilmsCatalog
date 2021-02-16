@@ -1,8 +1,110 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model FilmsCatalog.Models.FilmsViewModel
+
+@{
+    ViewData["Title"] = "Фильмы";
+    var firstFilm = Model.Films.FirstOrDefault();
+    var pageNumber = Model.PageNumber;
+    var pageSize = Model.PageSize;
+    var allCount = Model.AllCount;
+    var maxPage = allCount / pageSize;
+    var isAuthenticated = Model.IsAuthenticated;
+    var films = Model.Films;
+    var isShowNext = maxPage - 1 > pageNumber;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1>Фильмы</h1>
+
+<p>
+    @if (isAuthenticated)
+    {
+        <a asp-action="Create">Добавить</a>
+    }
+</p>
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                Название
+            </th>
+
+            <th>
+                Описание
+            </th>
+            <th>
+                Год выпуска
+            </th>
+            <th>
+                Режиссёр
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in films)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Directors)
+                </td>
+                <td>
+                    
+                    <div>
+                        <a asp-action="Details" asp-route-id="@item.Id">Подробнее</a>
+                    </div>
+                        @if (item.IsEditingAllowed)
+                        {
+                            <div>
+                                <a asp-action="Edit" asp-route-id="@item.Id">Изменить</a> |
+                                <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+                            </div>
+                        }
+                    
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+@if (maxPage > 0)
+{
+    <nav aria-label="...">
+        <ul class="pagination">
+            @if (pageNumber > 0)
+            {
+                <li class="page-item">
+                    @Html.ActionLink("<<", "Index" , new { pageNumber=pageNumber - 1, pageSize=pageSize }, new {
+                            @class="page-link" }) </li>
+                <li class="page-item">
+                    @Html.ActionLink(pageNumber.ToString(), "Index", new
+                        {
+                            pageNumber = pageNumber - 1,
+                            pageSize = pageSize
+                        }, new { @class = "page-link" })
+                </li>
+            }
+            <li class="page-item active">
+                @Html.ActionLink((pageNumber + 1).ToString(), "Index", new { pageNumber = pageNumber, pageSize =
+            pageSize }, new { @class = "page-link" })
+            </li>
+            @if (isShowNext)
+            {
+                <li class="page-item">@Html.ActionLink((pageNumber + 2).ToString(), "Index", new { pageNumber =
+            pageNumber + 1, pageSize = pageSize }, new { @class = "page-link" })</li>
+                <li class="page-item">
+                    @Html.ActionLink(">>", "Index", "Home", new { pageNumber =
+                 pageNumber + 1, pageSize = pageSize }, new { @class = "page-link" })
+                </li>
+            }
+        </ul>
+    </nav>
+}
